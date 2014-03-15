@@ -1,7 +1,7 @@
 %ControlCentor
 % when you test the code,please correct the directory in next command
 %load('/home/pswzyu/workspace/674/K2/Sample.mat');
-function learn_k2_cn( Sample )
+function [DAG, CPT] = learn_k2_cn( Sample )
 
 cards = max( Sample, [], 1 );
 
