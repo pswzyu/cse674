@@ -7,11 +7,11 @@ mean = sum(dataset,1)/size(dataset,1);
 [num_sample, num_feature] = size(dataset);
 max_X = max(dataset,[],1);
 
-for i = 1: num_feature
+dissimilarity = sum(abs(dataset - repmat(mean,num_sample,1))./repmat(max_X,num_sample,1), 2);
 
-    d = abs(dataset(:,i)- mean(i))/max_X(i);
+[min_value, min_index] = min(dissimilarity);
 
-end
 
-d = d/num_feature;
+select_sample = dataset(min_index,:);
+
 
