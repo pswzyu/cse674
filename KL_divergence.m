@@ -7,4 +7,4 @@ function kl_diverg = KL_divergence(dataset1,dataset2)
 
 %% Compute KL divergence based on entropy
 
-kl_diverg = entropy1-entropy2;
+kl_diverg = entropy2-entropy1;

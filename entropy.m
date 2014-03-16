@@ -19,7 +19,7 @@ end
 entropy = zeros(1,num_feature);
 
 log_prob = log(prob);
-log_prob(prob==0) = 0;
+log_prob(prob==0) = log(eps);
 
 for i = 1: num_feature
     for j = 1: num_instance
