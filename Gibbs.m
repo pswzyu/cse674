@@ -30,17 +30,13 @@ for t = 1:tao
                 prob = temp(parent_state(1),parent_state(2),parent_state(3),:);
                 curr_state(1,i) = deter_sample(prob);         
             else 
-                sprintf('parent size out of number!\n')
+                error('parent size out of number!\n')
             end
         end
     end
     sampled_data = [sampled_data;curr_state];
 end
-
-
 sampled_data = sampled_data(burnin+1:end, :);
-
-
 end
 
 function sample_temp = deter_sample(prob)
