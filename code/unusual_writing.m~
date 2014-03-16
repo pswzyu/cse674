@@ -1,0 +1,31 @@
+function [ index ] = unusual_writing( dataset )
+%UNUSUAL_WRITING Summary of this function goes here
+%   Detailed explanation goes here
+% the input is the dataset
+% return value is the index of the most unusual writing datapoint in the
+% dataset
+
+% first get the DAG and CPT of the dataset
+[DAG, CPT, child_bnet] = learn_k2_cn(dataset);
+%% use the CPT to calculate the probability of one datapoint
+
+% we are calculating the joint distribution as if we observe all the
+% variables
+NN = size(DAG, 1);
+NS = size(dataset, 1);
+% initialize the inference engine
+
+
+for step = 1:NS
+    one_sample = dataset(step,:);
+    prob = 1;
+    for step2 = 1:NN
+        parents = DAG(:,step2);
+        parents_asst = one_sample(parents'>0);
+        tmp_idx = num2cell(parents_asst);
+        prob = prob * 
+    end
+end
+
+end
+

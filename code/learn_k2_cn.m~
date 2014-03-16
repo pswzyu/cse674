@@ -1,7 +1,7 @@
 %ControlCentor
 % when you test the code,please correct the directory in next command
 %load('/home/pswzyu/workspace/674/K2/Sample.mat');
-function [DAG, CPT, child_bnet_para] = learn_k2_cn( Sample )
+function [DAG, CPT, b] = learn_k2_cn( Sample )
 
 cards = max( Sample, [], 1 );
 
@@ -25,8 +25,7 @@ NN = size(DAG, 1);
 child_bnet = mk_bnet(DAG, cards);
 
 for step = 1:NN
-    child_bnet.CPD{step} = tabular_CPD(child_bnet, step, 'prior_type', 'dirichlet',...
-        'dirichlet_type', 'unif');
+    child_bnet.CPD{step} = tabular_CPD(child_bnet, step);
 end
 
 child_bnet_para = learn_params(child_bnet, Sample');
