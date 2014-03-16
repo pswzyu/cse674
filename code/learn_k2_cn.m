@@ -38,5 +38,4 @@ for step = 1:NN
     CPT{step} = tmp.CPT;
 end
 
-
 end

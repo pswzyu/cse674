@@ -1,6 +1,6 @@
 %ControlCentor
 % when you test the code,please correct the directory in next command
-load('/home/pswzyu/workspace/674/K2/Sample.mat');
+load Sample.mat;
 
 % Sample is a variable that saves our training database.
 LGObj = ConstructLGObj( Sample); % construct an object
