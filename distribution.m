@@ -4,6 +4,11 @@ function prob = distribution(dataset)
 
 prob = zeros(max(max(dataset)), num_feature);
 
+
+
+
+
+
 for i = 1: num_feature
     feature_max = max(dataset(:,i));
     for j = 1: feature_max
