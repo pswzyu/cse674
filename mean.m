@@ -1,4 +1,4 @@
-function mean_vec = mean(dataset)
+function [mean_vec] = mean(dataset)
 
 [num_instance, num_feature ] = size(dataset);
 [unique_data] = unique(dataset, 'rows');

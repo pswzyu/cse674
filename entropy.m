@@ -2,31 +2,23 @@ function [prob , entropy] = entropy(dataset)
 
 [num_instance, num_feature ] = size(dataset);
 
-%% Computing probability of each feature type
-prob = zeros(max(max(dataset)), num_feature);
+%% Computing probability of each sample
+[unique_data] = unique(dataset, 'rows');
+prob = zeros(size(unique_data,1),1);
 
-for i = 1: num_feature
-    feature_max = max(dataset(:,i));
-    for j = 1: feature_max
-        temp = length(find(dataset(:,i) == j));
-        prob(j,i) = temp/num_instance;
+for i = 1:num_instance
+    for j = 1:size(unique_data)
+        if unique_data(j,:) == dataset(i,:)
+            ind = j;
+            break;
+        end
     end
-    
+    prob(ind,1) = prob(ind,1)+1;
 end
-
 
 %% Computing Entropy
-entropy = zeros(1,num_feature);
-
-log_prob = log(prob);
-log_prob(prob==0) = log(eps);
-
-for i = 1: num_feature
-    for j = 1: num_instance
-
-        entropy(1,i) = entropy(1,i) + log_prob(dataset(j,i),i);
-
-    end
+entropy = 0;
+for i = 1:size(prob,1)
+    entropy = entropy + log(prob(i,1));
 end
-
-entropy = -entropy/num_instance;
+entropy = - entropy / num_instance;
